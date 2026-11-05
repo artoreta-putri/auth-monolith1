@@ -10,6 +10,7 @@ class ProductServiceProvider extends ServiceProvider
     {
         //
     }
+
     public function boot(): void
     {
         // Memuat migrasi modul

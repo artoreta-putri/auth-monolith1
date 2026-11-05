@@ -6,12 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role',
+    ];
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+
     public function up(): void
     {
-        if (Schema::hasColumn('users', 'role')) {
-            return;
-        }
-
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default('user')->after('email');
         });
@@ -19,10 +32,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        if (! Schema::hasColumn('users', 'role')) {
-            return;
-        }
-
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
         });

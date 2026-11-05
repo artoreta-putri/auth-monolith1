@@ -10,6 +10,7 @@ class StoreProductRequest extends FormRequest
     {
         return true;
     }
+
     public function rules(): array
     {
         return [
@@ -22,6 +23,7 @@ class StoreProductRequest extends FormRequest
             'category_ids.*' => ['exists:categories,id'],
         ];
     }
+
     public function messages(): array
     {
         return [

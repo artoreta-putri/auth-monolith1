@@ -24,6 +24,7 @@ class UpdateProductRequest extends FormRequest
             'description' => ['nullable', 'string', 'max:5000'],
         ];
     }
+
     public function messages(): array
     {
         return [

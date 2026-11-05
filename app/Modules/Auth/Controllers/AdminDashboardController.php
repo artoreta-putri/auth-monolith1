@@ -12,6 +12,7 @@ class AdminDashboardController extends Controller
         $totalUsers = User::count();
         $totalAdmins = User::where('role', 'admin')->count();
         $totalRegularUsers = User::where('role', 'user')->count();
+
         return view('admin.dashboard', compact(
             'totalUsers',
             'totalAdmins',
